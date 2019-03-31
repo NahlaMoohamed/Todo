@@ -33,3 +33,6 @@ list-style-type:none;
 .fa-check-circle:hover:before{
     color:green;
 }
+.dateLabelStyle{
+    color:rgba(211,211,211,10);
+}
