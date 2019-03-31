@@ -64,7 +64,7 @@ function editItem(item){
   }
   swal({   
         title: "Edit",   
-        text: "Edit your task:",   
+        text: "Edit your task",   
         content: {
           element: "input",
           attributes: {
@@ -82,7 +82,7 @@ function editItem(item){
           toDoList.splice(currentIndex,1,new Todo(inputValue,true,getCurrentTime()));
           showToDoList();
           getActiveElements();
-          swal("Task edited Successfully!","success"); 
+          swal({text:"Task edited Successfully!",icon: "success"});  
         });
 }
 
