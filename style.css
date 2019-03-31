@@ -36,3 +36,10 @@ list-style-type:none;
 .dateLabelStyle{
     color:rgba(211,211,211,10);
 }
+.swal-button--confirm {
+    background-color:palevioletred;
+}
+
+.swal-button.swal-button--confirm:hover{
+    background-color:#F4D1DC;
+}
