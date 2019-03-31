@@ -1,0 +1,35 @@
+.nav-style{
+    margin:5px;
+    font-weight:bold;
+    text-decoration:none;
+    color:teal;
+    font-size: 1.17em;
+}
+
+.todo-li{
+    margin:5px;
+    font-weight:bold;
+    font-size: 1.17em;
+}
+
+ul{
+list-style-type:none;
+}
+    
+.remaining{
+    margin:5px;
+    font-weight:bold;
+    font-size: 1.17em;
+    color: palevioletred;
+    text-align: center;
+}
+
+.header{
+    color: palevioletred;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.fa-check-circle:hover:before{
+    color:green;
+}
