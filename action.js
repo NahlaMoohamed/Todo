@@ -30,6 +30,7 @@ function appendToList(){
 }
 document.onkeydown=function(){
   if(window.event.keyCode=='13'){
+    if(toDoListInput.value != "")
       appendToList();
   }
 }
@@ -53,14 +54,36 @@ function deleteItem(item){
 }
 
 function editItem(item){
+  var current = null;
+  var currentIndex = 0;
   for(let i=0; i< toDoList.length;i++){
     if(toDoList[i].todo+toDoList[i].date == item.target.parentNode.textContent){
-      var promptInput = prompt("Edit!",toDoList[i].todo);
-      toDoList.splice(i,1,new Todo(promptInput,true,getCurrentTime()));
+      current = toDoList[i];
+      currentIndex = i;
     }
   }
-  showToDoList();
-  getActiveElements();
+  swal({   
+        title: "Edit",   
+        text: "Edit your task:",   
+        content: {
+          element: "input",
+          attributes: {
+            value: current.todo
+          },
+        },   
+        buttons: true}).then(inputValue =>  
+        {   
+          if (inputValue == false) 
+            return false;      
+          if (inputValue == "") {     
+            swal.showInputError("Please enter task!");     
+            return false   
+          }  
+          toDoList.splice(currentIndex,1,new Todo(inputValue,true,getCurrentTime()));
+          showToDoList();
+          getActiveElements();
+          swal("Task edited Successfully!","success"); 
+        });
 }
 
 function getActiveElements(){
