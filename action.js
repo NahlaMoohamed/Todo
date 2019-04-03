@@ -37,7 +37,12 @@ document.onkeydown=function(){
 function listItemDone(item){
   for(let i=0; i< toDoList.length;i++){
     if(toDoList[i].todo+toDoList[i].date == item.target.parentNode.textContent){
-      toDoList.splice(i,1,new Todo(toDoList[i].todo,false,toDoList[i].date));
+      if(toDoList[i].isDone == true){
+        toDoList.splice(i,1,new Todo(toDoList[i].todo,false,toDoList[i].date));
+      }
+      else if(toDoList[i].isDone == false){
+        toDoList.splice(i,1,new Todo(toDoList[i].todo,true,toDoList[i].date));
+      }
     }
   }
   showToDoList();
@@ -82,7 +87,7 @@ function editItem(item){
           toDoList.splice(currentIndex,1,new Todo(inputValue,true,getCurrentTime()));
           showToDoList();
           getActiveElements();
-          swal({text:"Task edited Successfully!",icon: "success"});  
+          swal({text:"Task edited Successfully!",icon: "success"}); 
         });
 }
 
@@ -168,6 +173,9 @@ function showToDoList(){
       var x = document.createElement('i');
       x.className = 'fa fa-check-circle';
       x.style = 'margin-left:1%;color:green;cursor: pointer;text-decoration: none;';
+      x.addEventListener('click',function(ev){
+        listItemDone(ev);
+      });
       temp.appendChild(x);
 
       var deleteDiv = document.createElement('div');
