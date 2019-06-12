@@ -62,7 +62,9 @@ function listItemDone(item){
     }
   }
   showToDoList();
+  showDoneTasks();
   getActiveElements();
+  showDoneTasksButton();
 }
 function deleteItem(item){
   for(let i=0; i< toDoList.length;i++){
@@ -73,6 +75,8 @@ function deleteItem(item){
   console.log(toDoList);
   showToDoList();
   getActiveElements();
+  showDoneTasks();
+  showDoneTasksButton();
 }
 
 function editItem(item){
@@ -133,6 +137,7 @@ function showToDoList(){
   if(div.hasChildNodes()){
     div.removeChild(div.firstChild);
   }
+
   var ul = document.createElement('ul');
 
   for(let i=0; i<toDoList.length; i++){
@@ -181,6 +186,7 @@ function showToDoList(){
       temp.appendChild(deleteDiv);
       ul.appendChild(temp);
     }
+    /*
     else{
       var temp = document.createElement('li');
       temp.className = 'well todo-li';
@@ -220,9 +226,96 @@ function showToDoList(){
       lineDive.appendChild(temp);
       deleteDiv.appendChild(iDiv);
       temp.appendChild(deleteDiv);
+      //doneUl.appendChild(lineDive);
       ul.appendChild(lineDive);
-    }
+    }*/
     div.appendChild(ul);
+    //doneDiv.appendChild(doneUl);
   }
   return 1;
+}
+
+function toggleDoneTasks(){
+  var doneDiv = document.getElementById('doneTasksDiv');
+  if (doneDiv.style.display === "none") {
+    doneDiv.style.display = "block";
+  } else {
+    doneDiv.style.display = "none";
+  }
+}
+
+function showDoneTasks(){
+  var doneDiv = document.getElementById('doneTasksDiv');
+
+  if(doneDiv.hasChildNodes()){
+    doneDiv.removeChild(doneDiv.firstChild);
+  }
+
+  var doneUl = document.createElement('ul');
+  
+  for(let i=0; i<toDoList.length; i++){
+    if(toDoList[i].isDone == false){
+      var temp = document.createElement('li');
+      temp.className = 'well todo-li';
+      temp.textContent = toDoList[i].todo;
+      var lineDive = document.createElement('div');
+      lineDive.style = 'text-decoration:line-through';
+      var x = document.createElement('i');
+      x.className = 'fa fa-check-circle';
+      x.style = 'margin-left:1%;color:black;cursor: pointer;text-decoration: none;';
+      x.addEventListener('click',function(ev){
+        listItemDone(ev);
+      });
+      temp.appendChild(x);
+
+      var deleteDiv = document.createElement('div');
+      deleteDiv.style = 'float:right;';
+
+      var dateDiv = document.createElement('div');
+      dateDiv.style = 'display:inline-block;';
+
+      var dateLabel = document.createElement('p');
+      dateLabel.className= 'dateLabelStyle';
+      dateLabel.textContent = toDoList[i].date;
+      dateDiv.appendChild(dateLabel);
+      deleteDiv.appendChild(dateDiv);
+
+      var iDiv = document.createElement('div');
+      iDiv.style = 'display:inline-block;';
+
+      var i2 = document.createElement('i');
+      i2.className = 'fa fa-times-circle';
+      i2.style = 'margin-left:1%;color:red;cursor: pointer;text-decoration: none;';
+      i2.addEventListener('click',function(ev){
+        deleteItem(ev);
+      });
+      iDiv.appendChild(i2);
+      lineDive.appendChild(temp);
+      deleteDiv.appendChild(iDiv);
+      temp.appendChild(deleteDiv);
+      doneUl.appendChild(lineDive);
+    }
+    doneDiv.appendChild(doneUl);
+  }
+  return 1;
+}
+
+function doneTasksCount(){
+  let count = 0;
+  for(let i=0; i<toDoList.length; i++){
+    if(toDoList[i].isDone === false){
+      count++;
+    }
+  }
+  return count;
+}
+
+function showDoneTasksButton(){
+  var toggleButton = document.getElementById('toggleDoneButton');
+  if(doneTasksCount() > 0){
+    toggleButton.style.display = "block";
+  }
+  else{
+    toggleButton.style.display = "none";
+  }
 }
