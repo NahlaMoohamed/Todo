@@ -189,7 +189,7 @@ function showToDoList(){
       lineDive.style = 'text-decoration:line-through';
       var x = document.createElement('i');
       x.className = 'fa fa-check-circle';
-      x.style = 'margin-left:1%;color:green;cursor: pointer;text-decoration: none;';
+      x.style = 'margin-left:1%;color:black;cursor: pointer;text-decoration: none;';
       x.addEventListener('click',function(ev){
         listItemDone(ev);
       });
