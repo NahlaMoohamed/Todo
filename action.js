@@ -16,8 +16,9 @@ function getCurrentTime(){
   var year = currentDate.getFullYear();
   var hour = currentDate.getHours();
   var minutes = currentDate.getMinutes();
+  var seconds = currentDate.getSeconds();
 
-  return `${date}-${(month + 1)}-${year} ${hour}:${minutes}` ;
+  return `${date}-${(month + 1)}-${year} ${hour}:${minutes}:${seconds}` ;
 }
 function appendToList(){
   var dateString = getCurrentTime();
@@ -34,14 +35,29 @@ document.onkeydown=function(){
       appendToList();
   }
 }
+function getLastTrueElementIndex(){
+  let index = 0;
+  for(let i=0; i<toDoList.length; i++){
+    if(toDoList[i].isDone === false){
+      index = i;
+      break;
+    }
+  }
+  return index;
+}
 function listItemDone(item){
   for(let i=0; i< toDoList.length;i++){
     if(toDoList[i].todo+toDoList[i].date == item.target.parentNode.textContent){
       if(toDoList[i].isDone == true){
-        toDoList.splice(i,1,new Todo(toDoList[i].todo,false,toDoList[i].date));
+        //toDoList.splice(i,1,new Todo(toDoList[i].todo,false,toDoList[i].date));
+        let temp = toDoList.splice(i,1);
+        toDoList.push(new Todo(temp[0].todo,false,temp[0].date));
+        break;
       }
       else if(toDoList[i].isDone == false){
-        toDoList.splice(i,1,new Todo(toDoList[i].todo,true,toDoList[i].date));
+        let temp = toDoList.splice(i,1);
+        toDoList.splice(getLastTrueElementIndex(),0,new Todo(temp[0].todo,true,temp[0].date));
+        break;
       }
     }
   }
@@ -54,6 +70,7 @@ function deleteItem(item){
       toDoList.splice(i,1);
     }
   }
+  console.log(toDoList);
   showToDoList();
   getActiveElements();
 }
