@@ -239,8 +239,10 @@ function toggleDoneTasks(){
   var doneDiv = document.getElementById('doneTasksDiv');
   if (doneDiv.style.display === "none") {
     doneDiv.style.display = "block";
+    document.getElementById('toggleDoneButton').innerText = "Hide done tasks";
   } else {
     doneDiv.style.display = "none";
+    document.getElementById('toggleDoneButton').innerText = "Show done tasks";
   }
 }
 
@@ -317,6 +319,7 @@ function showDoneTasksButton(){
   }
   else{
     toggleButton.style.display = "none";
+    toggleButton.innerText = "Show done tasks";
     document.getElementById('doneTasksDiv').style.display = "none";
   }
 }
