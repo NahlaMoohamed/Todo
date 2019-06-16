@@ -317,5 +317,6 @@ function showDoneTasksButton(){
   }
   else{
     toggleButton.style.display = "none";
+    document.getElementById('doneTasksDiv').style.display = "none";
   }
 }
