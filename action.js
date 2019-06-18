@@ -100,14 +100,18 @@ function editItem(item){
         buttons: true}).then(inputValue =>  
         {   
           if (inputValue == false) 
-            return false;      
+            return false;    
           if (inputValue == "") {     
             swal.showInputError("Please enter task!");     
             return false   
-          }  
+          } 
+          if(inputValue === null)
+            return;
           toDoList.splice(currentIndex,1,new Todo(inputValue,true,getCurrentTime()));
           showToDoList();
+          showDoneTasks();
           getActiveElements();
+          showDoneTasksButton();
           swal({text:"Task edited Successfully!",icon: "success"}); 
         });
 }
