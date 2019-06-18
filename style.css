@@ -60,3 +60,18 @@ padding: 0;
     border-radius: 8px;
     display: none;
   }
+
+.icon{
+    margin-left:1%;
+    color:black;
+    cursor:pointer;
+    text-decoration: none;
+    margin-left: 1%;
+}
+
+.red{
+    color:red;
+}
+.black{
+    color:black;
+}

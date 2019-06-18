@@ -146,16 +146,14 @@ function showToDoList(){
       temp.className = 'well todo-li';
       temp.textContent = toDoList[i].todo;
       var iele = document.createElement('i');
-      iele.className = 'fa fa-check-circle';
-      iele.style = 'margin-left:1%;color:black;cursor:pointer;text-decoration: none;';
+      iele.className = 'fa fa-check-circle icon black';
       iele.addEventListener('click',function(ev){
         listItemDone(ev);
       });
       temp.appendChild(iele);
 
       var iedit = document.createElement('i');
-      iedit.className = 'fa fa-edit';
-      iedit.style = 'margin-left:1%;color:black;cursor:pointer;text-decoration: none;';
+      iedit.className = 'fa fa-edit icon black';
       iedit.addEventListener('click',function(ev){
         editItem(ev);
       });
@@ -176,8 +174,7 @@ function showToDoList(){
       var iDiv = document.createElement('div');
       iDiv.style = 'display:inline-block;';
       var i2 = document.createElement('i');
-      i2.className = 'fa fa-times-circle';
-      i2.style = 'margin-left:1%;color:red;cursor:pointer;text-decoration: none;';
+      i2.className = 'fa fa-times-circle icon red';
       i2.addEventListener('click',function(ev){
         deleteItem(ev);
       });
@@ -186,51 +183,7 @@ function showToDoList(){
       temp.appendChild(deleteDiv);
       ul.appendChild(temp);
     }
-    /*
-    else{
-      var temp = document.createElement('li');
-      temp.className = 'well todo-li';
-      temp.textContent = toDoList[i].todo;
-      var lineDive = document.createElement('div');
-      lineDive.style = 'text-decoration:line-through';
-      var x = document.createElement('i');
-      x.className = 'fa fa-check-circle';
-      x.style = 'margin-left:1%;color:black;cursor: pointer;text-decoration: none;';
-      x.addEventListener('click',function(ev){
-        listItemDone(ev);
-      });
-      temp.appendChild(x);
-
-      var deleteDiv = document.createElement('div');
-      deleteDiv.style = 'float:right;';
-
-      var dateDiv = document.createElement('div');
-      dateDiv.style = 'display:inline-block;';
-
-      var dateLabel = document.createElement('p');
-      dateLabel.className= 'dateLabelStyle';
-      dateLabel.textContent = toDoList[i].date;
-      dateDiv.appendChild(dateLabel);
-      deleteDiv.appendChild(dateDiv);
-
-      var iDiv = document.createElement('div');
-      iDiv.style = 'display:inline-block;';
-
-      var i2 = document.createElement('i');
-      i2.className = 'fa fa-times-circle';
-      i2.style = 'margin-left:1%;color:red;cursor: pointer;text-decoration: none;';
-      i2.addEventListener('click',function(ev){
-        deleteItem(ev);
-      });
-      iDiv.appendChild(i2);
-      lineDive.appendChild(temp);
-      deleteDiv.appendChild(iDiv);
-      temp.appendChild(deleteDiv);
-      //doneUl.appendChild(lineDive);
-      ul.appendChild(lineDive);
-    }*/
     div.appendChild(ul);
-    //doneDiv.appendChild(doneUl);
   }
   return 1;
 }
@@ -263,8 +216,7 @@ function showDoneTasks(){
       var lineDive = document.createElement('div');
       lineDive.style = 'text-decoration:line-through';
       var x = document.createElement('i');
-      x.className = 'fa fa-check-circle';
-      x.style = 'margin-left:1%;color:black;cursor: pointer;text-decoration: none;';
+      x.className = 'fa fa-check-circle icon black';
       x.addEventListener('click',function(ev){
         listItemDone(ev);
       });
@@ -286,8 +238,7 @@ function showDoneTasks(){
       iDiv.style = 'display:inline-block;';
 
       var i2 = document.createElement('i');
-      i2.className = 'fa fa-times-circle';
-      i2.style = 'margin-left:1%;color:red;cursor: pointer;text-decoration: none;';
+      i2.className = 'fa fa-times-circle icon red';
       i2.addEventListener('click',function(ev){
         deleteItem(ev);
       });
