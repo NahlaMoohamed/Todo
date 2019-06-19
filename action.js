@@ -8,6 +8,49 @@ var Todo = function(todo, indicator,date){
 }
 
 let toDoList = [];
+
+const DATATIMEOUT = 60;
+
+function listChanged(list1, list2){
+  if(list1.length != list2.length)
+    return false;
+  for(let i=0; i<list1.length; i++){
+    if(! list2.get(list1[i])){
+      return false;
+      break;
+    }
+  }
+}
+function convertJsonToTodo(oldTodo){
+  oldTodo = JSON.parse(oldTodo);
+  if(oldTodo){
+    for(let i=0; i<oldTodo.length; i++){
+      let temp = new Todo(oldTodo[i].todo,oldTodo[i].isDone,oldTodo[i].date);
+      toDoList.push(temp);
+    }
+  }
+}  
+function fetchData(){ 
+  let oldData = localStorage.getItem('toDoList');
+  if(oldData){
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+  }
+  else{
+    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+  }
+}
+
+function init(){
+  let timmy = setInterval(fetchData, 5000); 
+  convertJsonToTodo(localStorage.getItem('toDoList'));
+  showToDoList();
+  showDoneTasks();
+  getActiveElements();
+  showDoneTasksButton();
+}
+        
+document.addEventListener('DOMContentLoaded', init);
+
 function getCurrentTime(){
   var currentDate = new Date();
 
