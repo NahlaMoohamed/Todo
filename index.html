@@ -16,13 +16,15 @@
 	    	<h1 class="header">To-Do list</h1>
 	  	</div>
 	  	<div class="row" id="myForm">
-			<div class=" col-sm-11">
-	    		<input class="form-control" id ="toDoListInput" placeholder="What needs to be done?" formControlName="toDoListInput" type="text">
-			</div>
-			<div class="col-sm-1" >
-	    		<input class="btn btn-light" type="submit" name="Add" onclick="appendToList()">
-			</div>
-		</div>
+		    <div class="col-xs-12">
+		    	<div class="input-group">
+		        	<input class="form-control" id="toDoListInput" placeholder="What needs to be done?" formControlName="toDoListInput" type="text">
+			        <div class="input-group-btn">
+			          <input class="btn btn-light" type="submit" name="Add" style="margin-left: 5px;border-radius:4px;" onclick="appendToList()">
+			        </div>
+		      	</div>
+		    </div>
+		  </div>
 		<div id = "toDoListDiv"></div>
 		<button id="toggleDoneButton" onclick="toggleDoneTasks()" class="collapsible">Show done tasks</button>
 		<div id="doneTasksDiv" style="display:none;"></div>
